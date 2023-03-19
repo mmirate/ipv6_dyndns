@@ -1,0 +1,13 @@
+# /etc/systemd/system/dyndns.service
+[Unit]
+Description=Dynamic DNS updater
+Wants=network-online.target
+After=network-online.target nss-lookup.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dyndns ...
+#DynamicUser=yes
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7
